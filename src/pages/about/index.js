@@ -46,7 +46,9 @@ export const About = () => {
                   return (
                     <tr key={i}>
                       <th scope="row">{data.jobtitle}</th>
-                      <td>{data.where}</td>
+                      <td>
+                        <a href={data.companyUrl} target="_blank">{data.where}</a>
+                      </td>
                       <td>{data.date}</td>
                     </tr>
                   );
@@ -59,10 +61,21 @@ export const About = () => {
           <Col lg="5">
             <h3 className="color_sec py-4">Skills</h3>
           </Col>
-          <Col lg="7">
+          <Col lg="7"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+            }}
+          >
             {skills.map((data, i) => {
               return (
-                <div key={i}>
+                <div key={i}
+                  style={{
+                    width: "48%",
+                  }}
+                >
                   <h3 className="progress-title">{data.name}</h3>
                   <div className="progress">
                     <div
@@ -81,14 +94,34 @@ export const About = () => {
         </Row>
         <Row className="sec_sp">
           <Col lang="5">
-            <h3 className="color_sec py-4">services</h3>
+            <h3 className="color_sec py-4">Projects</h3>
           </Col>
           <Col lg="7">
             {services.map((data, i) => {
               return (
                 <div className="service_ py-4" key={i}>
-                  <h5 className="service__title">{data.title}</h5>
-                  <p className="service_desc">{data.description}</p>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <h5 className="service__title">{data.title}</h5>
+                    <a target="_blank" href={data.link}> {data.link}</a>
+                  </div>
+
+                  <div
+                    style={{
+                      paddingTop: "5px",
+                    }}
+                  ><b>Technologies Used:- </b>{data.tech}</div>
+
+                  <p className="service_desc"
+                    style={{
+                      paddingTop: "5px",
+                    }}
+                  >{data.description}</p>
                 </div>
               );
             })}
